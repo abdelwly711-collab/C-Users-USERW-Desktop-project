@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة فندق جامعة عمران</title>
+    <!-- ربط ملف التصميم الخارجي -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- صفحة تسجيل الدخول -->
+    <div id="login-page">
+        <div class="login-card">
+            <h2>فندق جامعة عمران</h2>
+            <p>نظام إدارة الحجوزات والخدمات الذكية</p>
+            <div class="input-group">
+                <label>اسم المستخدم</label>
+                <input type="text" id="username" placeholder="أدخل اسم المستخدم (admin)">
+            </div>
+            <div class="input-group">
+                <label>كلمة المرور</label>
+                <input type="password" id="password" placeholder="أدخل كلمة المرور (1234)">
+            </div>
+            <button class="login-btn" onclick="handleLogin()">تسجيل الدخول</button>
+            <div id="login-error" class="error-msg">اسم المستخدم أو كلمة المرور غير صحيحة!</div>
+        </div>
+    </div>
+
+    <!-- التطبيق الرئيسي بعد تسجيل الدخول -->
+    <div id="main-app">
+        <!-- الشريط الجانبي navigation -->
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <h3>فندق جامعة عمران</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active" onclick="switchTab('suites')">الأجنحة والأسعار</li>
+                <li onclick="switchTab('services')">الخدمات المتكاملة</li>
+                <li onclick="switchTab('booking')">حجز جناح جديد</li>
+                <li onclick="switchTab('reports')">سجل الحجوزات</li>
+            </ul>
+            <div class="logout-btn" onclick="handleLogout()">تسجيل الخروج</div>
+        </div>
+
+        <!-- مساحة المحتوى المتبدلة -->
+        <div class="content-area">
+            
+            <!-- قسم الأجنحة -->
+            <div id="suites-section" class="page-section active">
+                <h1>الأجنحة الفاخرة المتاحة</h1>
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-header">1. الجناح الملكي (Royal Suite)</div>
+                        <div class="card-body">
+                            <p>فخامة لا مثيل لها مع إطلالة بانورامية على الجامعة والمدينة.</p>
+                            <div class="price-tag">$200 / ليلة</div>
+                            <ul class="feature-list">
+                                <li>غرفتين نوم وصالة استقبال واسعة</li>
+                                <li>شاشة ذكية 75 بوصة ونظام صوتي</li>
+                                <li>حمام جاكوزي خاص</li>
+                                <li>خدمة غرف على مدار الساعة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">2. الجناح التنفيذي (Executive Suite)</div>
+                        <div class="card-body">
+                            <p>مثالي لرجال الأعمال والأكاديميين والزوار الدبلوماسيين.</p>
+                            <div class="price-tag">$150 / ليلة</div>
+                            <ul class="feature-list">
+                                <li>غرفة نوم رئيسية مع مكتب عمل متكامل</li>
+                                <li>إنترنت فائق السرعة مجاني</li>
+                                <li>آلة تحضير القهوة الفاخرة</li>
+                                <li>دخول مجاني لقاعة الاجتماعات</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">3. الجناح العائلي (Family Suite)</div>
+                        <div class="card-body">
+                            <p>الراحة والخصوصية الكاملة لجميع أفراد عائلتك.</p>
+                            <div class="price-tag">$120 / ليلة</div>
+                            <ul class="feature-list">
+                                <li>ثلاث غرف نوم منفصلة</li>
+                                <li>مطبخ صغير مجهز بالكامل</li>
+                                <li>منطقة ألعاب آمنة للأطفال</li>
+                                <li>شاشات متعددة متصلة بالإنترنت</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم الخدمات -->
+            <div id="services-section" class="page-section">
+                <h1>الخدمات الشاملة (مضمنة ومضافة)</h1>
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-header">الخدمات الغذائية والصناعية</div>
+                        <div class="card-body">
+                            <ul class="feature-list">
+                                <li><strong>بوفيه مفتوح:</strong> إفطار وعشاء يومي في مطعم الجامعة الفخم.</li>
+                                <li><strong>وجبات صحية مخصصة:</strong> كيتو، نباتي، وقليل الملح تحت إشراف خبراء تغذية.</li>
+                                <li><strong>خدمة الغرف الدورية:</strong> توصيل الأطعمة والمشروبات الساخنة للأجنحة 24 ساعة.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">الخدمات الرعاية الصحية واللياقة</div>
+                        <div class="card-body">
+                            <ul class="feature-list">
+                                <li><strong>العيادة الطبية:</strong> فحص دوري واستشارات طبية طارئة للنزلاء.</li>
+                                <li><strong>المركز الرياضي (Gym):</strong> أحدث الأجهزة الرياضية مع مدربين متخصصين.</li>
+                                <li><strong>السبا والاسترخاء:</strong> جلسات تدليك، ساونا، وحمام بخار استشفائي مجاني.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم حجز جناح -->
+            <div id="booking-section" class="page-section">
+                <h1>حجز جناح جديد للنزيل</h1>
+                <div class="form-container">
+                    <form id="bookingForm" onsubmit="saveBooking(event)">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label>اسم النزيل بالكامل</label>
+                                <input type="text" id="guestName" required>
+                            </div>
+                            <div class="input-group">
+                                <label>رقم الهاتف / الجوال</label>
+                                <input type="tel" id="guestPhone" required>
+                            </div>
+                            <div class="input-group" style="grid-column: span 2;">
+                                <label>نوع الجناح المطلوب</label>
+                                <select id="suiteType" style="width:100%; padding:12px; border:1px solid #cbd5e0; border-radius:6px; font-size:16px;">
+                                    <option value="الجناح الملكي ($200)">الجناح الملكي ($200 / ليلة)</option>
+                                    <option value="الجناح التنفيذي ($150)">الجناح التنفيذي ($150 / ليلة)</option>
+                                    <option value="الجناح العائلي ($120)">الجناح العائلي ($120 / ليلة)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>تاريخ الدخول</label>
+                                <input type="date" id="checkInDate" required>
+                            </div>
+                            <div class="input-group">
+                                <label>عدد الليالي</label>
+                                <input type="number" id="nightsCount" min="1" value="1" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit">تأكيد وإتمام الحجز</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- قسم التقارير والسجلات -->
+            <div id="reports-section" class="page-section">
+                <h1>سجل الحجوزات الحالية</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>رقم الحجز</th>
+                            <th>اسم النزيل</th>
+                            <th>نوع الجناح</th>
+                            <th>تاريخ الدخول</th>
+                            <th>عدد الليالي</th>
+                            <th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTableBody">
+                        <!-- البيانات المبدئية ستضاف عبر الجافا سكريبت -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ربط ملف البرمجة الخارجي -->
+    <script src="script.js"></script>
+</body>
+</html>
